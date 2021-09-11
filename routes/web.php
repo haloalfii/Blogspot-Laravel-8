@@ -25,7 +25,7 @@ Route::get('/about', function () {
     return view('about',  [
         "tittle" => "About",
         "name" => "Alfian Luthfi",
-        "email" => "alfian@gmail.com",
+        "email" => "alfiankurniwan85@gmail.com",
         "image" => "scan_22460.jpg"
     ]);
 });
