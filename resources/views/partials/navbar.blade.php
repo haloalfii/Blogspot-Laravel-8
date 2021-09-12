@@ -9,6 +9,7 @@
             <a class="nav-link {{ ($tittle === "Home") ? 'active' : '' }}" href="/">Home</a>
             <a class="nav-link {{ ($tittle === "About") ? 'active' : '' }}"" href="/about">About</a>
             <a class="nav-link {{ ($tittle === "Posts") ? 'active' : '' }}"" href="/posts">Post</a>
+            <a class="nav-link {{ ($tittle === "Post Categories") ? 'active' : '' }}"" href="/categories">Categories</a>
         </div>
         </div>
     </div>
