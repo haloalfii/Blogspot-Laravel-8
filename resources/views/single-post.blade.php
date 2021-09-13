@@ -4,7 +4,7 @@
     <h2>{{ $posts->tittle }}</h2>
 
     <br/>
-    <p>By : Alfian Luthfi in <a href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }}</a></p>
+    <p>By <a href="#" class="text-decoration-none">{{ $posts->user->name }}</a> in <a href="/categories/{{ $posts->category->slug }}">{{ $posts->category->name }}</a></p>
     {{-- {{ $posts->body }} --}}
     {!! $posts->body !!}
 
