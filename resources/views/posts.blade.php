@@ -5,7 +5,7 @@
     
     @if ($posts->count())
         <div class="card mb-3">
-            <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" class="card-img-top" alt="...">
+            <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
             <div class="card-body">
                 <h3 class="card-title "><a href="/posts/{{ $posts[0]->slug }}" class="text-dark text-decoration-none">{{ $posts[0]->tittle }}</a></h3>
                 <p>
@@ -21,14 +21,39 @@
         <p class="text-centet fs-4">No post found.</p>
     @endif
 
-    @foreach ($posts as $post)
+    <div class="container">
+        <div class="row">
+            @foreach ($posts->skip(1) as $post)       
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="position-absolute bg-dark px-3 py-2 text-white" style="background-color: rgba(0, 0, 0, 0.7)">
+                        <a href="/categories/{{ $post->category->slug }}" class="text-white text-decoration-none">{{ $post->category->name }}</a>
+                    </div>
+                    <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title"><a style="text-decoration: none" class="text-dark" href="/posts/{{ $post->slug }}">{{ $post->tittle }}</a></h5>
+                        <p>
+                            <small class="text-muted">
+                                By <a href="/authors/{{ $post->author->username }}" style="text-decoration: none">{{ $post->author->name }}</a> {{ $posts[0]->created_at->diffForHumans() }}
+                            </small>
+                        </p>
+                        <p class="card-text">{{ $post->excerpt }}</p>
+                        <a href="/posts/{{ $post->slug }}" class="text-decoration-none btn btn-danger">Read More..</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- @foreach ($posts->skip(1) as $post)
     <article class="mb-5 mt-4 border-bottom">
         <h2><a style="text-decoration: none" class="text-dark" href="/posts/{{ $post->slug }}">{{ $post->tittle }}</a></h2>
         <p>By <a href="/authors/{{ $post->author->username }}" style="text-decoration: none">{{ $post->author->name }}</a> in <a style="text-decoration: none" href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
         <p>{{ $post->excerpt }}</p>
         <a href="/posts/{{ $post->slug }}" class="text-decoration-none">Read More..</a>
     </article>  
-    @endforeach
+    @endforeach --}}
 
 @endsection
 
