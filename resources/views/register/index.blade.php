@@ -1,9 +1,10 @@
 @extends('layouts.outer')
 
 @section('container')
-<div class="row justify-content-center" style="margin-top: 200px">
+<div class="row justify-content-center" style="margin-top: 150px">
     <div class="col-lg-6">
         <main class="form-registration">
+            <h1 class="bi bi-app-indicator text-center"></h1>
             <h1 class="h3 mb-3 fw-normal text-center">{{ $tittle }} Form</h1>
             <form>
                 <div class="form-floating">
