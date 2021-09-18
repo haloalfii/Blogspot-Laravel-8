@@ -1,7 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.outer')
 
 @section('container')
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="margin-top: 200px">
     <div class="col-lg-6">
         <main class="form-registration">
             <h1 class="h3 mb-3 fw-normal text-center">{{ $tittle }} Form</h1>
