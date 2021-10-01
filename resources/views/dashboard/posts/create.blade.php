@@ -16,8 +16,19 @@
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" class="form-control" id="slug" name="slug">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
     </div>
+
+    <script>
+        const tittle = document.querySelector('#tittle');
+        const slug = document.querySelector('#slug');
+
+        tittle.addEventListener('change', function() {
+            fetch('/dashboard/posts/checkSlug?tittle=' + tittle.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        });
+    </script>
 
 @endsection
