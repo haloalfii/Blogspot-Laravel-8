@@ -6,8 +6,8 @@
     </div>
 
     <div class="col-lg-8">
-        @csrf
         <form method="POST" action="/dashboard/posts">
+            @csrf
             <div class="mb-3">
                 <label for="tittle" class="form-label">Tittle</label>
                 <input type="text" class="form-control" id="tittle" name="tittle">
@@ -24,6 +24,11 @@
                     @endforeach
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="body" class="form-label">Category</label>
+                <input id="body" type="hidden" name="body">
+                <trix-editor input="body"></trix-editor>
+            </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
         </form>
     </div>
@@ -37,6 +42,10 @@
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
         });
+
+        document.addEventListener('trix-file-accept', function(e) {
+            e.preventDefault();
+        })
     </script>
 
 @endsection
