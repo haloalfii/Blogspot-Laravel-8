@@ -14,7 +14,7 @@
                     class="form-control @error('tittle')
                     is-invalid
                 @enderror"
-                    id="tittle" name="tittle" autofocus>
+                    id="tittle" name="tittle" autofocus value="{{ old('tittle') }}">
 
                 @error('tittle')
                     <div class="invalid-feedback">
@@ -29,7 +29,7 @@
                     class="form-control @error('slug')
                     is-invalid
                 @enderror" id="slug"
-                    name="slug">
+                    name="slug" value="{{ old('slug') }}">
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -40,7 +40,12 @@
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @if (old('category_id') == $category->id)
+                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                        @else
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endif
+
                     @endforeach
                 </select>
             </div>
@@ -51,7 +56,7 @@
                         {{ $message }}
                     @enderror
                 </p>
-                <input id="body" type="hidden" name="body">
+                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                 <trix-editor input="body"></trix-editor>
             </div>
             <button type="submit" class="btn btn-primary">Create Post</button>
