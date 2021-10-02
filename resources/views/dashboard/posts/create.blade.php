@@ -10,11 +10,31 @@
             @csrf
             <div class="mb-3">
                 <label for="tittle" class="form-label">Tittle</label>
-                <input type="text" class="form-control" id="tittle" name="tittle">
+                <input type="text"
+                    class="form-control @error('tittle')
+                    is-invalid
+                @enderror"
+                    id="tittle" name="tittle" autofocus>
+
+                @error('tittle')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug">
+                <input type="text"
+                    class="form-control @error('slug')
+                    is-invalid
+                @enderror" id="slug"
+                    name="slug">
+                @error('slug')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
@@ -25,7 +45,12 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="body" class="form-label">Category</label>
+                <label for="body" class="form-label">Post</label>
+                <p class="text-danger">
+                    @error('body')
+                        {{ $message }}
+                    @enderror
+                </p>
                 <input id="body" type="hidden" name="body">
                 <trix-editor input="body"></trix-editor>
             </div>
